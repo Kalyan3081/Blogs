@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { mongoDB_connection } from './connection.js';
 import AuthRoutes from './routes/AuthRoutes.js';
+import BlogRoutes from './routes/BlogRoutes.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 mongoDB_connection()
 
 app.use('/auth', AuthRoutes)
+app.use('/blog', BlogRoutes)
 
 app.get('/', (req, res) => {
     res.send('Hello World')
