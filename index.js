@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { mongoDB_connection } from './connection.js';
 import AuthRoutes from './routes/AuthRoutes.js';
 import BlogRoutes from './routes/BlogRoutes.js';
+import CommentRouter from './routes/CommentRoutes.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ mongoDB_connection()
 
 app.use('/auth', AuthRoutes)
 app.use('/blog', BlogRoutes)
+app.use('/comment', CommentRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello World')

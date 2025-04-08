@@ -1,5 +1,3 @@
-// Model it defines the database schema
-
 import mongoose, { Schema } from "mongoose";
 
 const CommentSchema = new Schema({
@@ -11,11 +9,12 @@ const CommentSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    userID: {
-        type: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true
     }
-})
+});
 
 const BlogSchema = new Schema({
     description: {
@@ -40,4 +39,4 @@ const BlogSchema = new Schema({
 });
 
 const Blog = mongoose.model("Blog", BlogSchema);
-export default Blog
+export default Blog;
