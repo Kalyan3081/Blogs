@@ -17,18 +17,20 @@ export default function Login() {
             email: form["email"].value,
             password: form["password"].value,
         };
+        console.log("Login data:", formData);
         dispatch(loginMiddleware(formData));
     }
 
     return (
-        <div className="auth-container">
-            <form className="form login-form" onSubmit={onSubmit}>
+        <div className="auth-container" >
+            <form className="form login-form" onSubmit={onSubmit} >
                 <input required name="email" type="email" placeholder="Email" />
                 <input
                     required
                     type="password"
                     placeholder="Password"
                     name="password"
+
                 />
                 <Button text="Login" isLoading={apiStatus === ApiStatus.pending} />
                 {errorMessage && <p className="error">{errorMessage}</p>}

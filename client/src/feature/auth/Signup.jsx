@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import "./auth.scss";
 import Button from "../../components/button/Button.jsx";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,10 +25,10 @@ export default function Signup() {
 
     return (
         <div className="auth-container">
-            <form className="form signup-form" onSubmit={onSignup}>
-                <input type="text" name="username" placeholder="Username" required />
+            <form className="form signup-form" onSubmit={onSignup} >
+                <input name="username" placeholder="Username" required b />
                 <input name="email" type="email" placeholder="Email" required />
-                <input type="password" name="password" placeholder="Password" required />
+                <input name="password" placeholder="Password" required />
                 <div>
                     <label htmlFor="male">Male</label>
                     <input name="gender" type="radio" value="male" id="male" required />
@@ -41,12 +42,13 @@ export default function Signup() {
                         value="female"
                         id="female"
                         required
+
                     />
                 </div>
 
                 <Button text="Signup" isLoading={apiStatus === ApiStatus.pending} />
                 {errorMessage && <p className="error">{errorMessage}</p>}
             </form>
-        </div>
+        </div >
     );
 }
