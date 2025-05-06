@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import store from "../redux/store.js";
-import { updateLoginStatus } from "../feature/auth/authslice";
+import { updateLoginStatus } from "../feature/auth/authSlice.js";
 import { Exception } from "sass";
 
 export const RequestMethod = {

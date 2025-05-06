@@ -1,6 +1,6 @@
 // const baseUrl = "http://localhost:8080";
 // Prod base url
-const baseUrl = "https://blog-app-server-jm15.onrender.com";
+const baseUrl = "https://blog-server-y4md.onrender.com";
 
 const Endpoints = {
   login: `${baseUrl}/auth/login`,

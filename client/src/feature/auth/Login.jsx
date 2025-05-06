@@ -1,49 +1,38 @@
-import React, { useState } from 'react'
-import './auth.scss'
-import Button from '../../components/button/Button'
+import React from "react";
+import Button from "../../components/button/Button";
+import { loginSelector } from "./authselectors";
+import { useDispatch, useSelector } from "react-redux";
+import { ApiStatus } from "../../network/ApiStatus";
+import { loginMiddleware } from "./authmiddleware";
 
-const Login = () => {
-    const [error, setError] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
+export default function Login() {
+    const { errorMessage, apiStatus } = useSelector(loginSelector);
+    const dispatch = useDispatch();
 
-    const onSubmitfun = async (e) => {
-        e.preventDefault()
-        setIsLoading(true)
-        const form = e.target
-        const formlogindata = {
+    async function onSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+
+        const formData = {
             email: form["email"].value,
-            password: form["password"].value
-        }
-        const response = await fetch("http://localhost:5000/auth/login", {
-            method: "POST",
-            // headers is used to tell the server that the data we are sending is in json format
-            headers: {
-                "Content-Type": "application/json"
-            },
-            // body is used to send the data to the server
-            body: JSON.stringify(formlogindata)
-        })
-        if (response.status >= 200 && response.status < 300) {
-            // Successfull
-        }
-        else {
-            const errMsg = await response.json()
-            setError(errMsg.message || "Login failed. Please try again.")
-        }
-        setIsLoading(false)
+            password: form["password"].value,
+        };
+        dispatch(loginMiddleware(formData));
     }
-    return (
-        <>
-            <div className="auth-container">
-                <form action="" className="form login-form" onSubmit={onSubmitfun}>
-                    <input type="text" name="email" id="email" placeholder='Enter your email' required />
-                    <input type="password" name="password" id="password" placeholder='Enter your password' required />
-                    <Button text="Login" isLoading={isLoading} />
-                    {error && <p className='error-msg'>{error}</p>}
-                </form>
-            </div>
-        </>
-    )
-}
 
-export default Login
+    return (
+        <div className="auth-container">
+            <form className="form login-form" onSubmit={onSubmit}>
+                <input required name="email" type="email" placeholder="Email" />
+                <input
+                    required
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                />
+                <Button text="Login" isLoading={apiStatus === ApiStatus.pending} />
+                {errorMessage && <p className="error">{errorMessage}</p>}
+            </form>
+        </div>
+    );
+}

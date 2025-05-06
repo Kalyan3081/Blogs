@@ -25,9 +25,9 @@ export default function Signup() {
     return (
         <div className="auth-container">
             <form className="form signup-form" onSubmit={onSignup}>
-                <input name="username" placeholder="Username" required />
+                <input type="text" name="username" placeholder="Username" required />
                 <input name="email" type="email" placeholder="Email" required />
-                <input name="password" placeholder="Password" required />
+                <input type="password" name="password" placeholder="Password" required />
                 <div>
                     <label htmlFor="male">Male</label>
                     <input name="gender" type="radio" value="male" id="male" required />
