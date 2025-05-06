@@ -1,0 +1,44 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #e3e3e3;
+    align-items: center;
+    padding: 0px 1rem;
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .nav-left {
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #000;
+            color: #fff;
+            transition: 0.5s;
+
+            &:hover {
+                background-color: #000000c3;
+            }
+        }
+    }
+}

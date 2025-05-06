@@ -1,0 +1,53 @@
+.loading-button {
+    padding: 12px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: #000000c3;
+    }
+
+    &.loading {
+        background-color: #e3e3e3;
+        /* Disabled color when loading */
+        color: #000;
+        /* Black text when loading */
+        cursor: not-allowed;
+    }
+
+    .loader {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #3498db;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin: 0 auto;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-button:disabled {
+    background-color: #e3e3e3;
+    color: #000;
+    // cursor: not-allowed;
+}

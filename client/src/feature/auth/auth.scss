@@ -1,0 +1,47 @@
+.auth-container {
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 400px;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #e3e3e3;
+            font-size: 1rem;
+
+            &:focus {
+                outline: none;
+                border-color: #000;
+            }
+        }
+
+        div {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+
+            label {
+                font-size: 1rem;
+            }
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 0.8rem;
+            text-align: center;
+
+        }
+    }
+}
